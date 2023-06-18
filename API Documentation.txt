@@ -1,0 +1,71 @@
+API Documentation for Nudge Creation API:
+
+Description:
+The Nudge Creation API allows users to create nudges associated with events. A nudge is a message or notification that can be sent to users to draw their attention to a specific event. Users can tag an event, provide a title, upload an image as a cover, set a send time, add a description, and include an icon and one-line invitation for the nudge.
+
+API Structure:
+- Base URL: `/api/v3/app`
+- Authentication: Not required
+- Content Type: `application/json`
+
+Endpoints:
+1. Get Event by ID
+   - Request Type: GET
+   - Endpoint: `/events?id=:event_id`
+   - Description: Retrieves an event by its unique ID.
+
+2. Get Latest Events
+   - Request Type: GET
+   - Endpoint: `/events?type=latest&limit=5&page=1`
+   - Description: Retrieves the latest events, paginated by page number and a limit of events per page.
+
+3. Create Event
+   - Request Type: POST
+   - Endpoint: `/events`
+   - Payload:
+     - name: string (required) - The name of the event.
+     - files[image]: file (required) - The image file to be used as the event's cover.
+     - tagline: string - A proper tagline for the event.
+     - schedule: string - The schedule of the event (Date + time).
+     - description: string - The description of the event.
+     - moderator: string - The user who is going to host the event.
+     - category: string - The category of the event.
+     - sub_category: string - The sub-category of the event.
+     - rigor_rank: integer - The rigor rank of the event.
+     - attendees: array - An array of user IDs who are attending the event.
+   - Description: Creates a new event and returns the ID of the created event.
+
+4. Update Event
+   - Request Type: PUT
+   - Endpoint: `/events/:id`
+   - Payload: Same as the payload for creating an event.
+   - Description: Updates the details of a specific event identified by its ID. Returns the updated event.
+
+5. Delete Event
+   - Request Type: DELETE
+   - Endpoint: `/events/:id`
+   - Description: Deletes a specific event identified by its ID.
+
+Object Data Model of an Event:
+{
+  "_id": string (auto-generated),
+  "name": string,
+  "tagline": string,
+  "schedule": string,
+  "description": string,
+  "files": {
+    "image": string (URL or file path)
+  },
+  "moderator": string,
+  "category": string,
+  "sub_category": string,
+  "rigor_rank": integer,
+  "attendees": array
+}
+
+Additional Notes:
+- User authentication is not required for these API endpoints.
+- The image file should be uploaded using a multipart/form-data request.
+- Proper error handling should be implemented, including validation of input data and appropriate error responses.
+
+Feel free to customize and extend the API documentation based on your specific requirements and implementation details.
