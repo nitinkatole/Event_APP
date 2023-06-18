@@ -1,4 +1,4 @@
-API Documentation for Nudge Creation API:
+                                    API Documentation for Nudge Creation API:
 
 Description:
 The Nudge Creation API allows users to create nudges associated with events. A nudge is a message or notification that can be sent to users to draw their attention to a specific event. Users can tag an event, provide a title, upload an image as a cover, set a send time, add a description, and include an icon and one-line invitation for the nudge.
@@ -63,9 +63,3 @@ Object Data Model of an Event:
   "attendees": array
 }
 
-Additional Notes:
-- User authentication is not required for these API endpoints.
-- The image file should be uploaded using a multipart/form-data request.
-- Proper error handling should be implemented, including validation of input data and appropriate error responses.
-
-Feel free to customize and extend the API documentation based on your specific requirements and implementation details.
